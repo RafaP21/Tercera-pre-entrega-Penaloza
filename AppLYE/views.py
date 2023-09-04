@@ -18,7 +18,7 @@ def empleado (req):
         if miformularioE.is_valid ():
             print (miformularioE.cleaned_data)
             data = miformularioE.cleaned_data
-            empleado= Empleado(nombre= data["nombre"], cargo=data["cargo"] ,sueldo = data["sueldo"])
+            empleado= Empleado(nombre= data["nombre"], cargo=data["cargo"] ,DNI = data["DNI"])
             empleado.save()
             return render (req,"inicio.html",{"mensaje" : "El Empleado a sido registrado!!"})
         else : 
@@ -36,7 +36,7 @@ def cliente (req):
         if miformularioc.is_valid ():
             print (miformularioc.cleaned_data)
             data = miformularioc.cleaned_data
-            cliente= Cliente(nombre= data["nombre"], producto=data["producto"] ,dni = data["dni"])
+            cliente= Cliente(nombre= data["nombre"], producto=data["producto"] ,DNI = data["DNI"])
             cliente.save()
             return render (req,"inicio.html",{"mensaje" : "El Cliente hizo su compra"})
         else : 
@@ -78,17 +78,17 @@ def busquedaproducto (req):
 
 def buscar (req):
      if req.GET["producto"]:
-         producto = req.GET["producto"]
-         
-         producto= Stock.objects.get(producto=producto)
-         
-         if producto : 
+          productostock = req.GET["producto"]
+        
+          try: 
+             producto =Stock.objects.get (producto=productostock)
+             if producto.cantidad > 0 :
+                return render (req,"resultado.html" , {"producto" : producto})
+             else: 
+                return render(req,"inicio.html" , {"mensaje" : "No hay Stock disponible"})
+          
+          except Stock.DoesNotExist:
              
-          return render(req, "resultado.html", {"producto": producto} )
-         else:
-             return HttpResponse("No hay en stock")
-             
-     else: 
-         return HttpResponse("No ingresaste ningun producto")
-     
+              return render(req,"inicio.html" , {"mensaje" : "El producto no existe"})
+                 
     

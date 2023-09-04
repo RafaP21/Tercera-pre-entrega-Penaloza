@@ -8,9 +8,9 @@ class ProductoFormulario(forms.Form):
 class ClienteFormulario(forms.Form):
      nombre = forms.CharField(required=True)
      producto = forms.CharField(required=True)
-     dni = forms.IntegerField(required=True)
+     DNI = forms.IntegerField(required=True)
 
 class EmpleadoFormulario(forms.Form):
      nombre = forms.CharField(required=True)
-     cargo = forms.IntegerField(required=True)
-     sueldo = forms.IntegerField(required=True)    
+     cargo = forms.CharField(required=True)
+     DNI = forms.IntegerField(required=True)    
