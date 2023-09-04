@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Stock</title>
+</head>
+<body>
+    <h1>Lista de Stock</h1>
+    <ul>
+
+
+
+ {% for stock in lista_stock  %}
+ 
+ <li>{{stock.nombre}} {{stock.cantidad}} {{curso.precio}}</li>
+ 
+ {% endfor %}
+    </ul>
+</body>
+</html>
+
