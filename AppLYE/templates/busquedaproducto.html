@@ -1,0 +1,12 @@
+{% extends 'padre.html' %}
+
+
+{% block contenidocambiante %}
+    <form action="{% url 'buscar' %}" method="get"> {% csrf_token %}
+        
+        <p> Producto: <input type="text" name = "producto"></p>
+        
+        <button type="submit">Buscar</button>
+    </form>
+{% endblock contenidocambiante %}
+    

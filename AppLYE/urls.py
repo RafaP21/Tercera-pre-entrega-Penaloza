@@ -7,6 +7,6 @@ urlpatterns = [
  path('empleado/', empleado, name = "empleado") ,
  path('stock/', producto_formulario, name = "producto_formulario") ,
  path('lista_stock/', lista_stock, name = "lista_stock") ,
- path('buscarP/', buscarP, name = "buscarP") ,
-#  path('producto_formulario/', producto_formulario, name = "producto_formulario") ,
+ path('busqueda_producto/', busquedaproducto, name = "busquedaproducto") ,
+ path('buscar/', buscar, name = "buscar") ,
 ]

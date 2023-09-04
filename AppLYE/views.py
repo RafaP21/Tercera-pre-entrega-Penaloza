@@ -3,22 +3,13 @@ from .models import *
 from django.http import HttpResponse, HttpRequest
 from .forms import ProductoFormulario, ClienteFormulario,EmpleadoFormulario
 
-# def empleado (erq, nombre,cargo, sueldo):
-#     empleado= Empleado(nombre = nombre, cargo = cargo , sueldo = sueldo)
-#     empleado.save()
 
-    
-# def cliente (req, nombre, producto,dni ,cantidad):
-#     cliente = Cliente(nombre = nombre, producto = producto , dni = dni , cantidad = cantidad)
-#     cliente.save()
-
-
-# def stock (req, nombre, cantidad, precio):
-#     stock = Stock (nombre= nombre, cantidad = cantidad, precio = precio)
-#     stock.save()
 
 def inicio (req):
     return render(req, "inicio.html")
+
+
+
 
 def empleado (req):
      if req.method == "POST":
@@ -36,6 +27,8 @@ def empleado (req):
         miformularioE = EmpleadoFormulario()
         return render(req, "empleado.html", {"miformularioE": miformularioE})
 
+
+
 def cliente (req):
   if req.method == "POST":
         miformularioc = ClienteFormulario(req.POST) 
@@ -52,8 +45,6 @@ def cliente (req):
         miformularioc = ClienteFormulario()
         return render(req, "cliente.html", {"miformularioc": miformularioc})
 
-# def stock (req):
-#     return render(req, "stock.html")
 
 def lista_stock(req):
     lista = Stock.objects.all()
@@ -81,3 +72,23 @@ def producto_formulario(req :HttpRequest):
     else: 
         miformulario = ProductoFormulario()
         return render(req, "producto_formulario.html", {"miformulario": miformulario})
+
+def busquedaproducto (req):
+    return render(req,"busquedaproducto.html")
+
+def buscar (req):
+     if req.GET["producto"]:
+         producto = req.GET["producto"]
+         
+         producto= Stock.objects.get(producto=producto)
+         
+         if producto : 
+             
+          return render(req, "resultado.html", {"producto": producto} )
+         else:
+             return HttpResponse("No hay en stock")
+             
+     else: 
+         return HttpResponse("No ingresaste ningun producto")
+     
+    
