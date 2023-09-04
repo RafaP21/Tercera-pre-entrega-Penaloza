@@ -2,9 +2,9 @@
 
 
 {% block contenidocambiante %}
-    <form action="{% url 'empleado' %}" method="post"> {% csrf_token %}
+    <form action="{% url 'producto_formulario' %}" method="post"> {% csrf_token %}
         
-        {{miformularioE.as_p}}
+        {{miformulario.as_p}}
         
         <button type="submit">Agregar</button>
     </form>
