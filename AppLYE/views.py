@@ -31,3 +31,7 @@ def stock (req):
 def lista_stock(req):
     lista = Stock.objects.all()
     return render(req, "lista_stock.html", {"lista_stock" : lista})
+
+
+def buscarP(req):
+    return render (req, "buscarP.html")

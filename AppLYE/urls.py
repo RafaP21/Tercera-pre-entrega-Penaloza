@@ -7,5 +7,6 @@ urlpatterns = [
  path('empleado/', empleado, name = "empleado") ,
  path('stock/', stock, name = "stock") ,
  path('lista_stock/', lista_stock, name = "lista_stock") ,
+ path('buscarP/', buscarP, name = "buscarP") ,
 
 ]
